@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Giant24924 Admin</title>
+    <style>
+        body { background: #0f172a; color: white; text-align: center; padding: 20px; font-family: sans-serif; }
+        button { padding: 15px 25px; margin: 10px; cursor: pointer; border-radius: 8px; border: none; background: #3b82f6; color: white; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>ระบบจัดการบอท Giant24924</h1>
+    
+    <!-- ปุ่มเปิดระบบ -->
+    <button onclick="updateSettings({autoMod: true})">เปิด AutoMod</button>
+    <!-- ปุ่มปิดระบบ -->
+    <button onclick="updateSettings({autoMod: false})">ปิด AutoMod</button>
+    
+    <script>
+        async function updateSettings(data) {
+            const response = await fetch('/api/settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            alert("อัปเดตสถานะบอทสำเร็จ!");
+        }
+    </script>
+</body>
+</html>
